@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../lib/mem.h
+
+../lib/sstring.h
+
+/home/hg/c/src/mem.c
+stdio.h
+-
+stdlib.h
+-
+mem.h
+/home/hg/c/src/mem.h
+
+/home/hg/c/src/sstring.c
+stdlib.h
+-
+stdio.h
+-
+mem.h
+/home/hg/c/src/mem.h
+sstring.h
+/home/hg/c/src/sstring.h
+

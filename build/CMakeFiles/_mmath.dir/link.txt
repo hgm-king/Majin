@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC -std=c11 -Wall -Werror -g  -shared -Wl,-soname,lib_mmath.so -o lib_mmath.so CMakeFiles/_mmath.dir/src/mmath.c.o 

@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../lib/mmath.h
+
+/home/hg/c/src/mmath.c
+stdio.h
+-
+stdlib.h
+-
+mmath.h
+/home/hg/c/src/mmath.h
+

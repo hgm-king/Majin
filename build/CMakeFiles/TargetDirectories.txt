@@ -1,0 +1,7 @@
+/home/hg/c/build/CMakeFiles/rebuild_cache.dir
+/home/hg/c/build/CMakeFiles/_llist.dir
+/home/hg/c/build/CMakeFiles/edit_cache.dir
+/home/hg/c/build/CMakeFiles/_sstring.dir
+/home/hg/c/build/CMakeFiles/_mmath.dir
+/home/hg/c/build/CMakeFiles/_dynarray.dir
+/home/hg/c/build/CMakeFiles/majin_exec.dir

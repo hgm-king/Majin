@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmem.a  CMakeFiles/mem.dir/src/mem.c.o
+/usr/bin/ranlib libmem.a

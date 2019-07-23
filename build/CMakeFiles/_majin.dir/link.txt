@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC -std=c11 -Wall -Werror -g  -shared -Wl,-soname,lib_majin.so -o lib_majin.so CMakeFiles/_majin.dir/src/mem.c.o CMakeFiles/_majin.dir/src/sstring.c.o CMakeFiles/_majin.dir/src/llist.c.o CMakeFiles/_majin.dir/src/dynarray.c.o 
