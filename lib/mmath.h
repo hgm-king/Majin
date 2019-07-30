@@ -7,7 +7,6 @@
 
 float power(float b, int p);
 float absolute_value(float x);
-
+float powerf (float x, int y);
 
 #endif
-

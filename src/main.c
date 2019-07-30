@@ -14,15 +14,16 @@ int main( void )
 {
   printf( "HELLO WORLD\n\n" );
 
-  int z = 0;
-  for ( int i = -2; i < 10; i++ )
+  for ( int i = -5; i < 15; i++ )
   {
-    for ( int j = -2; j < 10; j++ )
+    for ( int j = -5; j < 15; j++ )
     {
-      z = power( i, j );
-      printf( "%d^%d = %d => ", i, j, z );
-      if ( z == pow( i, j ) )  { printf( ":)\n" ); }
-      else  { printf( "FALSE\n" ); }
+      int z = floor(power( i, ++j ) + 0.5 );
+      int zed = pow( i, j );
+      int dif = z - zed;
+
+      if ( !dif )  { printf( ":)\n" ); }
+      else  { printf( "%d^%d = %d, %d\n", i, j, z, dif ); }
     }
   }
 }
