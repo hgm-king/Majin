@@ -1,1 +1,0 @@
-/usr/bin/cc -fPIC -std=c11 -Wall -Werror -g  -shared -Wl,-soname,lib_llist.so -o lib_llist.so CMakeFiles/_llist.dir/src/llist.c.o 

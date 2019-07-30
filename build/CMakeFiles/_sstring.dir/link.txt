@@ -1,1 +1,0 @@
-/usr/bin/cc -fPIC -std=c11 -Wall -Werror -g  -shared -Wl,-soname,lib_sstring.so -o lib_sstring.so CMakeFiles/_sstring.dir/src/mem.c.o CMakeFiles/_sstring.dir/src/sstring.c.o 

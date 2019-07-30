@@ -1,1 +1,0 @@
-/usr/bin/cc -std=c11 -Wall -Werror -g   CMakeFiles/sstring.dir/src/sstring.c.o  -o sstring lib_mem.a 

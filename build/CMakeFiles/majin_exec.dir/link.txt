@@ -1,1 +1,0 @@
-/usr/bin/cc -std=c11 -Wall -Werror -g   CMakeFiles/majin_exec.dir/src/main.c.o  -o majin_exec -Wl,-rpath,/home/hg/c/build lib_mmath.so lib_sstring.so lib_llist.so lib_dynarray.so -lm 

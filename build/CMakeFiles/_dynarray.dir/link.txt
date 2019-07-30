@@ -1,1 +1,0 @@
-/usr/bin/cc -fPIC -std=c11 -Wall -Werror -g  -shared -Wl,-soname,lib_dynarray.so -o lib_dynarray.so CMakeFiles/_dynarray.dir/src/mem.c.o CMakeFiles/_dynarray.dir/src/dynarray.c.o 
