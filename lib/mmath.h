@@ -5,6 +5,7 @@
 #define MAJIN_MATH_H
 
 
+
 float power(float b, int p);
 float absolute_value(float x);
 float square_root(float x);
