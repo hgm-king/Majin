@@ -22,13 +22,17 @@ size_t readmore(int sock, char *buf, size_t n);
 size_t writenw(int fd, char *buf, size_t n);
 size_t readall(int sock, char *buf, size_t n);
 
+int prime_addrinfo( struct addrinfo *hints );
+
 
 int main(int argc, char *argv[])
 {
+
   struct sockaddr_storage their_addr;
   int status;
   struct addrinfo hints;
   struct addrinfo *res;  // will point to the results
+
 
   memset( &hints, 0, sizeof hints );  // make sure the struct is empty
   hints.ai_family = AF_UNSPEC;        // don't care IPv4 or IPv6
@@ -103,6 +107,23 @@ void poll_wait(int fd, int events)
         perror("poll()");
         exit(1);
     }
+}
+
+/*
+This is here as a sort of config.
+Really it is an easily separated block of code,
+so I got it out of the way.
+*/
+int prime_addrinfo( struct addrinfo *hints )
+{
+  if ( !hints )  { return 0; }
+
+  memset( &hints, 0, sizeof hints );  // make sure the struct is empty
+  hints->ai_family = AF_UNSPEC;        // don't care IPv4 or IPv6
+  hints->ai_socktype = SOCK_STREAM;    // TCP stream sockets
+  hints->ai_flags = AI_PASSIVE;        // fill in my IP for me
+
+  return 1;
 }
 
 size_t readmore(int sock, char *buf, size_t n) {
