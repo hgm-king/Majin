@@ -32,7 +32,7 @@ float square_root( float x )
   return 0;
 }
 
-int div()
+int divide()
 {
   // Express D as M × 2e where 1 ≤ M < 2 (standard floating point representation)
   // D' := D / 2e+1   // scale between 0.5 and 1, can be performed with bit shift / exponent subtraction
@@ -42,6 +42,7 @@ int div()
   //     X := X + X × (1 - D' × X)
   // end
   // return N' × X
+  return 0;
 }
 
 float absolute_value( float x )

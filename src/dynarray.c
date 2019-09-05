@@ -10,10 +10,10 @@ dynarray_t *dynarray_generate(void)
 {
   dynarray_t *darr = malloc( sizeof ( dynarray_t ) );
   if ( !darr )  { return NULL; }
-  darr->data = NULL;
-  darr->size = 0;
+  darr->data  = NULL;
+  darr->size  = 0;
   darr->count = 0;
-  darr->used = 0;
+  darr->used  = 0;
   return darr;
 }
 
@@ -35,6 +35,7 @@ bool dynarray_grow(dynarray_t *darr, size_t needed )
   if ( !darr )  { return FALSE; }
 
   needed <<= 2;
+  // doubling the array should be good
   darr->data = realloc( darr->data, needed * darr->size );
   if ( !darr->data )  { return FALSE; }
   darr->count = needed;
@@ -47,6 +48,7 @@ bool dynarray_destroy(dynarray_t *darr)
 
   darr->size = 0;
   darr->count = 0;
+  darr->used = 0;
 
   free( darr->data );
   free( darr );
@@ -58,14 +60,14 @@ bool dynarray_read(dynarray_t *darr, void *dst, size_t index, size_t count)
 {
   if ( !darr || 0 > index || 0 > count )  { return FALSE; }
 
-  size_t length = darr->size * count;         // num bytes of src
-  size_t offset = darr->size * index;         // num bytes to start write
-  //size_t distance = count + index;            // elements used
+  size_t length   = darr->size * count;       // num bytes of src
+  size_t offset   = darr->size * index;       // num bytes to start write
+  //size_t distance = count + index;          // elements used
   size_t capacity = darr->size * darr->count; // current available bytes
-  size_t needed = offset + length;            // used + needed
+  size_t needed   = offset + length;          // used + needed
 
-	printf( "index:%zu, count:%zu\n", index, count );
-  printf( "length:%zu, offset:%zu, capacity:%zu, needed:%zu\n", length, offset, capacity, needed);
+	// printf( "index:%zu, count:%zu\n", index, count );
+  // printf( "length:%zu, offset:%zu, capacity:%zu, needed:%zu\n", length, offset, capacity, needed);
 
   if ( needed <= capacity && !copy( dst, darr->data + offset, length ) )  { return FALSE; }
   return TRUE;
@@ -75,19 +77,33 @@ bool dynarray_write(dynarray_t *darr, void *src, size_t index, size_t count)
 {
   if ( !darr || 0 > index || 0 > count )  { return FALSE; }
 
-  size_t length = darr->size * count;         // num bytes of src
-  size_t offset = darr->size * index;         // num bytes to start write
+  size_t length   = darr->size * count;       // num bytes of src
+  size_t offset   = darr->size * index;       // num bytes to start write
   size_t distance = count + index;            // elements used
   size_t capacity = darr->size * darr->count; // current available bytes
-  size_t needed = offset + length;            // used + needed
+  size_t needed   = offset + length;          // used + needed
 
-  //printf( "index:%zu, count:%zu\n", index, count );
-  //printf( "length:%zu, offset:%zu, capacity:%zu, needed:%zu\n", length, offset, capacity, needed);
+  // printf( "index:%zu, count:%zu\n", index, count );
+  // printf( "distance:%zu length:%zu, offset:%zu, capacity:%zu, needed:%zu\n", distance, length, offset, capacity, needed);
 
   if ( needed >= capacity && !dynarray_grow( darr, distance ) )  { return FALSE; }
 
   if ( !copy( darr->data + offset, src, length ) )  { return FALSE; }
   if ( distance > darr->used )  { darr->used = distance; }
+
+  return TRUE;
+}
+
+bool dynarray_iterate(dynarray_t *darr, void (*func)(void*, size_t) )
+{
+  if ( !darr )  { return FALSE; }
+  printf( "hello everyone\n" );
+  for ( size_t i = 0; i < darr->used; i++ )
+  {
+    size_t index = darr->size * i;
+    printf( "u:%zu i:%zu index:%zu \n", darr->used, i, index );
+    func( (darr->data + index) , darr->size );
+  }
 
   return TRUE;
 }
