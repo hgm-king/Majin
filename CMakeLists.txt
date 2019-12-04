@@ -16,6 +16,7 @@ set(CMAKE_COLOR_MAKEFILE ON)
 include_directories(lib)
 
 add_library(_sstring SHARED src/mem.c src/sstring.c)
+add_library(_ssocket SHARED src/ssocket.c)
 add_library(_llist SHARED src/llist.c)
 add_library(_mmath SHARED src/mmath.c)
 add_library(_tree SHARED src/mem.c src/tree.c)
@@ -23,5 +24,5 @@ add_library(_dynarray SHARED src/mem.c src/dynarray.c)
 
 add_executable(${PROJECT_NAME}_exec src/main.c)
 
-target_link_libraries( ${PROJECT_NAME}_exec _mmath  _sstring _llist _dynarray _tree m )
+target_link_libraries( ${PROJECT_NAME}_exec _mmath  _sstring _llist _dynarray _tree m pthread _ssocket )
 #target_link_libraries( ${PROJECT_NAME}_exec _dynarray)

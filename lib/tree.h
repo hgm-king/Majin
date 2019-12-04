@@ -14,6 +14,7 @@ typedef struct tree_node {
 tree_node_t *tree_node_generate();
 bool tree_node_initialize( tree_node_t *node, int value );
 tree_node_t *tree_insert( tree_node_t *head, int value );
+tree_node_t *tree_search( tree_node_t *head, int value );
 tree_node_t *tree_node_create( int value );
 void tree_destroy( tree_node_t *head);
 void tree_node_destroy( tree_node_t *node );

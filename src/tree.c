@@ -33,7 +33,8 @@ tree_node_t *tree_insert( tree_node_t *head, int value )
 
 tree_node_t *tree_search( tree_node_t *head, int value )
 {
-  if ( !head || head->data == value )  { return head; }
+  if ( !head ) { return NULL; }
+  if ( head->data == value )  { return head; }
 
   if ( head->data > value )  { return tree_search( head->left, value ); }
   else  { return tree_search( head->right, value ); }
