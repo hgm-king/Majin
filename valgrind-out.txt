@@ -1,132 +1,193 @@
-==358== Memcheck, a memory error detector
-==358== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==358== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==358== Command: src/epoll
-==358== Parent PID: 357
-==358== 
---358-- 
---358-- Valgrind options:
---358--    --leak-check=full
---358--    --show-leak-kinds=all
---358--    --track-origins=yes
---358--    --verbose
---358--    --log-file=valgrind-out.txt
---358-- Contents of /proc/version:
---358--   Linux version 4.15.0-1044-aws (buildd@lcy01-amd64-022) (gcc version 7.4.0 (Ubuntu 7.4.0-1ubuntu1~18.04.1)) #46-Ubuntu SMP Thu Jul 4 13:38:28 UTC 2019
---358-- 
---358-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-avx-avx2-bmi
---358-- Page sizes: currently 4096, max supported 4096
---358-- Valgrind library directory: /usr/lib/valgrind
---358-- Reading syms from /home/hg/c/src/epoll
---358-- Reading syms from /lib/x86_64-linux-gnu/ld-2.27.so
---358--   Considering /lib/x86_64-linux-gnu/ld-2.27.so ..
---358--   .. CRC mismatch (computed 1b7c895e wanted 2943108a)
---358--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.27.so ..
---358--   .. CRC is valid
---358-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
---358--   Considering /usr/lib/valgrind/memcheck-amd64-linux ..
---358--   .. CRC mismatch (computed c25f395c wanted 0a9602a8)
---358--    object doesn't have a symbol table
---358--    object doesn't have a dynamic symbol table
---358-- Scheduler: using generic scheduler lock implementation.
---358-- Reading suppressions file: /usr/lib/valgrind/default.supp
-==358== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-358-by-hg-on-???
-==358== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-358-by-hg-on-???
-==358== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-358-by-hg-on-???
-==358== 
-==358== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==358== don't want to do, unless you know exactly what you're doing,
-==358== or are doing some strange experiment):
-==358==   /usr/lib/valgrind/../../bin/vgdb --pid=358 ...command...
-==358== 
-==358== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==358==   /path/to/gdb src/epoll
-==358== and then give GDB the following command
-==358==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=358
-==358== --pid is optional if only one valgrind process is running
-==358== 
---358-- REDIR: 0x401f2f0 (ld-linux-x86-64.so.2:strlen) redirected to 0x58060901 (???)
---358-- REDIR: 0x401f0d0 (ld-linux-x86-64.so.2:index) redirected to 0x5806091b (???)
---358-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
---358--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
---358--   .. CRC mismatch (computed 4b63d83e wanted 670599e6)
---358--    object doesn't have a symbol table
---358-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
---358--   Considering /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so ..
---358--   .. CRC mismatch (computed a4b37bee wanted 8ad4dc94)
---358--    object doesn't have a symbol table
-==358== WARNING: new redirection conflicts with existing -- ignoring it
---358--     old: 0x0401f2f0 (strlen              ) R-> (0000.0) 0x58060901 ???
---358--     new: 0x0401f2f0 (strlen              ) R-> (2007.0) 0x04c32db0 strlen
---358-- REDIR: 0x401d360 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4c33ee0 (strcmp)
---358-- REDIR: 0x401f830 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4c374f0 (mempcpy)
---358-- Reading syms from /lib/x86_64-linux-gnu/libc-2.27.so
---358--   Considering /lib/x86_64-linux-gnu/libc-2.27.so ..
---358--   .. CRC mismatch (computed b1c74187 wanted 042cc048)
---358--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.27.so ..
---358--   .. CRC is valid
---358-- REDIR: 0x4edac70 (libc.so.6:memmove) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4ed9d40 (libc.so.6:strncpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4edaf50 (libc.so.6:strcasecmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4ed9790 (libc.so.6:strcat) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4ed9d70 (libc.so.6:rindex) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4edc7c0 (libc.so.6:rawmemchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4edade0 (libc.so.6:mempcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4edac10 (libc.so.6:bcmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4ed9d00 (libc.so.6:strncmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4ed9800 (libc.so.6:strcmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4edad40 (libc.so.6:memset) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4ef80f0 (libc.so.6:wcschr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4ed9ca0 (libc.so.6:strnlen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4ed9870 (libc.so.6:strcspn) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4edafa0 (libc.so.6:strncasecmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4ed9840 (libc.so.6:strcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4edb0e0 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4ed9da0 (libc.so.6:strpbrk) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4ed97c0 (libc.so.6:index) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4ed9c70 (libc.so.6:strlen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4ee46c0 (libc.so.6:memrchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4edaff0 (libc.so.6:strcasecmp_l) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4edabe0 (libc.so.6:memchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4ef8eb0 (libc.so.6:wcslen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4eda050 (libc.so.6:strspn) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4edaf20 (libc.so.6:stpncpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4edaef0 (libc.so.6:stpcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4edc7f0 (libc.so.6:strchrnul) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4edb040 (libc.so.6:strncasecmp_l) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---358-- REDIR: 0x4fca3c0 (libc.so.6:__strrchr_avx2) redirected to 0x4c32730 (rindex)
-==358== Syscall param epoll_ctl(event) points to uninitialised byte(s)
-==358==    at 0x4F5E24A: epoll_ctl (syscall-template.S:78)
-==358==    by 0x108BF5: epoll_add (in /home/hg/c/src/epoll)
-==358==    by 0x1089E8: main (in /home/hg/c/src/epoll)
-==358==  Address 0x1fff000124 is on thread 1's stack
-==358==  in frame #1, created by epoll_add (???:)
-==358==  Uninitialised value was created by a stack allocation
-==358==    at 0x108B9B: epoll_add (in /home/hg/c/src/epoll)
-==358== 
---358-- REDIR: 0x4fca590 (libc.so.6:__strlen_avx2) redirected to 0x4c32cf0 (strlen)
---358-- REDIR: 0x4ed3070 (libc.so.6:malloc) redirected to 0x4c2faa0 (malloc)
---358-- REDIR: 0x4fca1d0 (libc.so.6:__strchrnul_avx2) redirected to 0x4c37020 (strchrnul)
---358-- REDIR: 0x4fcaab0 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x4c37130 (mempcpy)
---358-- REDIR: 0x4fc1510 (libc.so.6:__strncmp_sse42) redirected to 0x4c33570 (__strncmp_sse42)
---358-- REDIR: 0x4ed3950 (libc.so.6:free) redirected to 0x4c30cd0 (free)
-==358== 
-==358== HEAP SUMMARY:
-==358==     in use at exit: 0 bytes in 0 blocks
-==358==   total heap usage: 1 allocs, 1 frees, 1,024 bytes allocated
-==358== 
-==358== All heap blocks were freed -- no leaks are possible
-==358== 
-==358== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==358== 
-==358== 1 errors in context 1 of 1:
-==358== Syscall param epoll_ctl(event) points to uninitialised byte(s)
-==358==    at 0x4F5E24A: epoll_ctl (syscall-template.S:78)
-==358==    by 0x108BF5: epoll_add (in /home/hg/c/src/epoll)
-==358==    by 0x1089E8: main (in /home/hg/c/src/epoll)
-==358==  Address 0x1fff000124 is on thread 1's stack
-==358==  in frame #1, created by epoll_add (???:)
-==358==  Uninitialised value was created by a stack allocation
-==358==    at 0x108B9B: epoll_add (in /home/hg/c/src/epoll)
-==358== 
-==358== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==26399== Memcheck, a memory error detector
+==26399== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==26399== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==26399== Command: build/majin_exec
+==26399== Parent PID: 26398
+==26399== 
+--26399-- 
+--26399-- Valgrind options:
+--26399--    --leak-check=full
+--26399--    --show-leak-kinds=all
+--26399--    --track-origins=yes
+--26399--    --verbose
+--26399--    --log-file=valgrind-out.txt
+--26399-- Contents of /proc/version:
+--26399--   Linux version 4.15.0-1044-aws (buildd@lcy01-amd64-022) (gcc version 7.4.0 (Ubuntu 7.4.0-1ubuntu1~18.04.1)) #46-Ubuntu SMP Thu Jul 4 13:38:28 UTC 2019
+--26399-- 
+--26399-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-avx-avx2-bmi
+--26399-- Page sizes: currently 4096, max supported 4096
+--26399-- Valgrind library directory: /usr/lib/valgrind
+--26399-- Reading syms from /home/hg/c/build/majin_exec
+--26399-- Reading syms from /lib/x86_64-linux-gnu/ld-2.27.so
+--26399--   Considering /lib/x86_64-linux-gnu/ld-2.27.so ..
+--26399--   .. CRC mismatch (computed 1b7c895e wanted 2943108a)
+--26399--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.27.so ..
+--26399--   .. CRC is valid
+--26399-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
+--26399--   Considering /usr/lib/valgrind/memcheck-amd64-linux ..
+--26399--   .. CRC mismatch (computed c25f395c wanted 0a9602a8)
+--26399--    object doesn't have a symbol table
+--26399--    object doesn't have a dynamic symbol table
+--26399-- Scheduler: using generic scheduler lock implementation.
+--26399-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==26399== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-26399-by-hg-on-???
+==26399== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-26399-by-hg-on-???
+==26399== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-26399-by-hg-on-???
+==26399== 
+==26399== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==26399== don't want to do, unless you know exactly what you're doing,
+==26399== or are doing some strange experiment):
+==26399==   /usr/lib/valgrind/../../bin/vgdb --pid=26399 ...command...
+==26399== 
+==26399== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==26399==   /path/to/gdb build/majin_exec
+==26399== and then give GDB the following command
+==26399==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=26399
+==26399== --pid is optional if only one valgrind process is running
+==26399== 
+--26399-- REDIR: 0x401f2f0 (ld-linux-x86-64.so.2:strlen) redirected to 0x58060901 (???)
+--26399-- REDIR: 0x401f0d0 (ld-linux-x86-64.so.2:index) redirected to 0x5806091b (???)
+--26399-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+--26399--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
+--26399--   .. CRC mismatch (computed 4b63d83e wanted 670599e6)
+--26399--    object doesn't have a symbol table
+--26399-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+--26399--   Considering /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so ..
+--26399--   .. CRC mismatch (computed a4b37bee wanted 8ad4dc94)
+--26399--    object doesn't have a symbol table
+==26399== WARNING: new redirection conflicts with existing -- ignoring it
+--26399--     old: 0x0401f2f0 (strlen              ) R-> (0000.0) 0x58060901 ???
+--26399--     new: 0x0401f2f0 (strlen              ) R-> (2007.0) 0x04c32db0 strlen
+--26399-- REDIR: 0x401d360 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4c33ee0 (strcmp)
+--26399-- REDIR: 0x401f830 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4c374f0 (mempcpy)
+--26399-- Reading syms from /lib/x86_64-linux-gnu/libpthread-2.27.so
+--26399--   Considering /usr/lib/debug/.build-id/28/c6aade70b2d40d1f0f3d0a1a0cad1ab816448f.debug ..
+--26399--   .. build-id is valid
+--26399-- Reading syms from /home/hg/c/build/lib_ssocket.so
+--26399-- Reading syms from /home/hg/c/build/lib_epoll.so
+--26399-- Reading syms from /lib/x86_64-linux-gnu/libc-2.27.so
+--26399--   Considering /lib/x86_64-linux-gnu/libc-2.27.so ..
+--26399--   .. CRC mismatch (computed b1c74187 wanted 042cc048)
+--26399--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.27.so ..
+--26399--   .. CRC is valid
+--26399-- REDIR: 0x54fec70 (libc.so.6:memmove) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x54fdd40 (libc.so.6:strncpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x54fef50 (libc.so.6:strcasecmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x54fd790 (libc.so.6:strcat) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x54fdd70 (libc.so.6:rindex) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x55007c0 (libc.so.6:rawmemchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x54fede0 (libc.so.6:mempcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x54fec10 (libc.so.6:bcmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x54fdd00 (libc.so.6:strncmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x54fd800 (libc.so.6:strcmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x54fed40 (libc.so.6:memset) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x551c0f0 (libc.so.6:wcschr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x54fdca0 (libc.so.6:strnlen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x54fd870 (libc.so.6:strcspn) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x54fefa0 (libc.so.6:strncasecmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x54fd840 (libc.so.6:strcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x54ff0e0 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x54fdda0 (libc.so.6:strpbrk) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x54fd7c0 (libc.so.6:index) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x54fdc70 (libc.so.6:strlen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x55086c0 (libc.so.6:memrchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x54feff0 (libc.so.6:strcasecmp_l) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x54febe0 (libc.so.6:memchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x551ceb0 (libc.so.6:wcslen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x54fe050 (libc.so.6:strspn) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x54fef20 (libc.so.6:stpncpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x54feef0 (libc.so.6:stpcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x55007f0 (libc.so.6:strchrnul) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x54ff040 (libc.so.6:strncasecmp_l) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--26399-- REDIR: 0x55ee3c0 (libc.so.6:__strrchr_avx2) redirected to 0x4c32730 (rindex)
+--26399-- REDIR: 0x55eef50 (libc.so.6:__memset_avx2_unaligned_erms) redirected to 0x4c365d0 (memset)
+--26399-- REDIR: 0x55ee590 (libc.so.6:__strlen_avx2) redirected to 0x4c32cf0 (strlen)
+--26399-- REDIR: 0x54f7070 (libc.so.6:malloc) redirected to 0x4c2faa0 (malloc)
+--26399-- REDIR: 0x55eeab0 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x4c37130 (mempcpy)
+--26399-- REDIR: 0x55ee1d0 (libc.so.6:__strchrnul_avx2) redirected to 0x4c37020 (strchrnul)
+==26399== Conditional jump or move depends on uninitialised value(s)
+==26399==    at 0x10930C: connection_read (main.c:166)
+==26399==    by 0x109029: main (main.c:93)
+==26399==  Uninitialised value was created by a stack allocation
+==26399==    at 0x1092B0: connection_read (main.c:153)
+==26399== 
+==26399== Conditional jump or move depends on uninitialised value(s)
+==26399==    at 0x10930C: connection_read (main.c:166)
+==26399==    by 0x109029: main (main.c:93)
+==26399==  Uninitialised value was created by a stack allocation
+==26399==    at 0x1092B0: connection_read (main.c:153)
+==26399== 
+==26399== Conditional jump or move depends on uninitialised value(s)
+==26399==    at 0x10930C: connection_read (main.c:166)
+==26399==    by 0x109029: main (main.c:93)
+==26399==  Uninitialised value was created by a stack allocation
+==26399==    at 0x1092B0: connection_read (main.c:153)
+==26399== 
+==26399== Conditional jump or move depends on uninitialised value(s)
+==26399==    at 0x10930C: connection_read (main.c:166)
+==26399==    by 0x109029: main (main.c:93)
+==26399==  Uninitialised value was created by a stack allocation
+==26399==    at 0x1092B0: connection_read (main.c:153)
+==26399== 
+==26399== Conditional jump or move depends on uninitialised value(s)
+==26399==    at 0x10930C: connection_read (main.c:166)
+==26399==    by 0x109029: main (main.c:93)
+==26399==  Uninitialised value was created by a stack allocation
+==26399==    at 0x1092B0: connection_read (main.c:153)
+==26399== 
+--26399-- REDIR: 0x55dfc80 (libc.so.6:__stpcpy_ssse3) redirected to 0x4c35f60 (stpcpy)
+--26399-- REDIR: 0x54f7950 (libc.so.6:free) redirected to 0x4c30cd0 (free)
+==26399== 
+==26399== Process terminating with default action of signal 13 (SIGPIPE)
+==26399==    at 0x4E4D96A: send (send.c:28)
+==26399==    by 0x109433: connection_write (main.c:207)
+==26399==    by 0x1090AB: main (main.c:97)
+==26399== 
+==26399== HEAP SUMMARY:
+==26399==     in use at exit: 0 bytes in 0 blocks
+==26399==   total heap usage: 411 allocs, 411 frees, 324,104 bytes allocated
+==26399== 
+==26399== All heap blocks were freed -- no leaks are possible
+==26399== 
+==26399== ERROR SUMMARY: 231797 errors from 5 contexts (suppressed: 0 from 0)
+==26399== 
+==26399== 135 errors in context 1 of 5:
+==26399== Conditional jump or move depends on uninitialised value(s)
+==26399==    at 0x10930C: connection_read (main.c:166)
+==26399==    by 0x109029: main (main.c:93)
+==26399==  Uninitialised value was created by a stack allocation
+==26399==    at 0x1092B0: connection_read (main.c:153)
+==26399== 
+==26399== 
+==26399== 215 errors in context 2 of 5:
+==26399== Conditional jump or move depends on uninitialised value(s)
+==26399==    at 0x10930C: connection_read (main.c:166)
+==26399==    by 0x109029: main (main.c:93)
+==26399==  Uninitialised value was created by a stack allocation
+==26399==    at 0x1092B0: connection_read (main.c:153)
+==26399== 
+==26399== 
+==26399== 1541 errors in context 3 of 5:
+==26399== Conditional jump or move depends on uninitialised value(s)
+==26399==    at 0x10930C: connection_read (main.c:166)
+==26399==    by 0x109029: main (main.c:93)
+==26399==  Uninitialised value was created by a stack allocation
+==26399==    at 0x1092B0: connection_read (main.c:153)
+==26399== 
+==26399== 
+==26399== 6283 errors in context 4 of 5:
+==26399== Conditional jump or move depends on uninitialised value(s)
+==26399==    at 0x10930C: connection_read (main.c:166)
+==26399==    by 0x109029: main (main.c:93)
+==26399==  Uninitialised value was created by a stack allocation
+==26399==    at 0x1092B0: connection_read (main.c:153)
+==26399== 
+==26399== 
+==26399== 223623 errors in context 5 of 5:
+==26399== Conditional jump or move depends on uninitialised value(s)
+==26399==    at 0x10930C: connection_read (main.c:166)
+==26399==    by 0x109029: main (main.c:93)
+==26399==  Uninitialised value was created by a stack allocation
+==26399==    at 0x1092B0: connection_read (main.c:153)
+==26399== 
+==26399== ERROR SUMMARY: 231797 errors from 5 contexts (suppressed: 0 from 0)
