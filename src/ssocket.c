@@ -39,7 +39,7 @@ int socket_create( char *host, int port, int backlog )
 
   if ( 0 > socket_listen( listen_sd, backlog ) )
   {
-    perror( "socket bind failed" );
+    perror( "socket listen failed" );
     return -1;
   }
 
