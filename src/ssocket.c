@@ -18,7 +18,7 @@ int socket_create( char *host, int port, int backlog )
 {
   if ( 0 > port || 0 > backlog )  { return -1; }
 
-  int listen_sd = socket(AF_INET6, SOCK_STREAM, 0);
+  int listen_sd = socket(AF_INET, SOCK_STREAM, 0);
   if ( 0 > listen_sd )
   {
     perror( "socket() failed" );
@@ -80,7 +80,7 @@ int socket_bind( int listen_sd, char *host, int port )
 
   struct sockaddr_in6 addr;
   memset( &addr, 0, sizeof(addr) );
-  addr.sin6_family      = AF_INET6;
+  addr.sin6_family      = AF_INET;
   memcpy( &addr.sin6_addr, &in6addr_any, sizeof(in6addr_any) );
   addr.sin6_port        = htons( port );
 
